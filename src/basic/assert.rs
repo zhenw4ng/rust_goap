@@ -174,27 +174,27 @@ impl Hash for Assert {
             Assert::Equals(v) => {
                 0_u8.hash(state);
                 v.hash(state);
-            }
+            },
             Assert::NotEquals(v) => {
                 1_u8.hash(state);
                 v.hash(state);
-            }
+            },
             Assert::GreaterThanEquals(v) => {
                 2_u8.hash(state);
                 v.hash(state);
-            }
+            },
             Assert::LessThanEquals(v) => {
                 3_u8.hash(state);
                 v.hash(state);
-            }
+            },
             Assert::GreaterThan(v) => {
                 4_u8.hash(state);
                 v.hash(state);
-            }
+            },
             Assert::LessThan(v) => {
                 5_u8.hash(state);
                 v.hash(state);
-            }
+            },
         }
     }
 }

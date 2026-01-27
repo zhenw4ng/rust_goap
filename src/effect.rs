@@ -90,10 +90,7 @@ impl Default for Effect {
     /// assert_eq!(default_effect.cost, 1);
     /// ```
     fn default() -> Self {
-        Self {
-            mutations: vec![],
-            cost: 1,
-        }
+        Self { mutations: vec![], cost: 1 }
     }
 }
 
@@ -115,10 +112,7 @@ impl Effect {
     /// assert_eq!(effect.cost, 1);
     /// ```
     pub fn new() -> Self {
-        Self {
-            mutations: vec![],
-            cost: 1,
-        }
+        Self { mutations: vec![], cost: 1 }
     }
 
     /// Adds a mutation to the effect using the builder pattern.

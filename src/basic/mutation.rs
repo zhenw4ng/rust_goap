@@ -125,20 +125,20 @@ pub fn apply_mutator(world_state: &mut WorldState, mutator: &Mutation) {
     match mutator {
         Mutation::Set(key, value) => {
             world_state.0.insert(key.into(), *value);
-        }
+        },
         Mutation::Delete(key) => {
             world_state.0.remove(key);
-        }
+        },
         Mutation::Increment(key, value) => {
             if let Some(current_value) = world_state.0.get_mut(key) {
                 *current_value += *value;
             }
-        }
+        },
         Mutation::Decrement(key, value) => {
             if let Some(current_value) = world_state.0.get_mut(key) {
                 *current_value -= *value;
             }
-        }
+        },
     }
 }
 

@@ -155,9 +155,7 @@ impl Goal {
     ///     .with("stamina", Assert::gt_eq(20));
     /// ```
     pub fn new() -> Self {
-        Self {
-            requirements: BTreeMap::new(),
-        }
+        Self { requirements: BTreeMap::new() }
     }
 
     /// Adds a requirement to the goal using the builder pattern.

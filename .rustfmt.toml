@@ -1,0 +1,43 @@
+# Rustfmt configuration for rust_goap project
+#
+# Minimal configuration using only stable features
+# to ensure consistent code formatting
+
+# Basic formatting
+edition = "2021"        # Rust edition
+max_width = 100         # Maximum line width
+hard_tabs = false       # Use spaces, not tabs
+tab_spaces = 4          # 4 spaces per indent
+
+# Import organization
+reorder_imports = true  # Sort imports alphabetically
+
+# Match expression formatting
+match_block_trailing_comma = true  # Add trailing comma in match blocks
+
+# Heuristics for better formatting
+use_small_heuristics = "Max"  # Use small heuristics where possible
+
+# Struct and enum formatting
+struct_variant_width = 80  # Width for struct variants
+struct_lit_width = 80      # Width for struct literals
+
+# Function call formatting
+fn_call_width = 80         # Width for function calls
+
+# Array formatting
+array_width = 80           # Width for array literals
+
+# Merge multiple derives
+merge_derives = true
+
+# Use field init shorthand where possible
+use_field_init_shorthand = true
+
+# Remove unnecessary parentheses
+remove_nested_parens = true
+
+# Project notes:
+# - 100 character line width for good readability
+# - Match expressions formatted clearly for state machine logic
+# - All features are stable and compatible

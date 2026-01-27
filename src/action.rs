@@ -88,11 +88,7 @@ impl Action {
     /// assert!(action.effect.is_none());
     /// ```
     pub fn new(key: impl Into<String>) -> Self {
-        Self {
-            key: key.into(),
-            preconditions: vec![],
-            effect: None,
-        }
+        Self { key: key.into(), preconditions: vec![], effect: None }
     }
 
     /// Adds a precondition to the action.

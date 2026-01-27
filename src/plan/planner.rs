@@ -63,16 +63,10 @@ fn successors<'a>(
         }
 
         // Create a new effect with the same properties
-        let new_effect = Effect {
-            mutations: effect.mutations.clone(),
-            cost: effect.cost,
-        };
+        let new_effect = Effect { mutations: effect.mutations.clone(), cost: effect.cost };
 
         // Return the successor node with its transition cost
-        Some((
-            Node::Effect((action.key.clone(), new_effect, new_state)),
-            effect.cost,
-        ))
+        Some((Node::Effect((action.key.clone(), new_effect, new_state)), effect.cost))
     })
 }
 
@@ -96,7 +90,7 @@ fn is_goal(node: &Node, goal: &Goal) -> bool {
                 // If a goal requirement key is not in the state,
                 // the goal cannot be satisfied
                 return false;
-            }
+            },
         };
         compare_values(required_value, state_value)
     })
@@ -151,7 +145,7 @@ pub fn make_plan_with_strategy(
                 |node| heuristic(node, goal),
                 |node| is_goal(node, goal),
             )
-        }
+        },
     }
 }
 
@@ -270,14 +264,14 @@ pub fn format_plan(plan: (Vec<Node>, usize)) -> String {
                 output.push_str(&format_mutations(effect.mutations.clone()));
                 output.push_str(&format!("current state:\n{:?}\n", state));
                 last_state = state.clone();
-            }
+            },
             Node::State(s) => {
                 output.push_str("\t\t= INITIAL STATE\n");
                 for (k, v) in &s.0 {
                     output.push_str(&format!("\t\t{k} = {v}\n"));
                 }
                 last_state = s.clone();
-            }
+            },
         }
         output.push_str("\n\t\t---\n");
     }

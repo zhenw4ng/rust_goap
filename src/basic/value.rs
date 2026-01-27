@@ -155,7 +155,7 @@ impl Value {
                 } else {
                     1
                 }
-            }
+            },
             (Value::I64(lhs), Value::I64(rhs)) => (lhs - rhs).unsigned_abs(),
             (Value::F64(lhs), Value::F64(rhs)) => (lhs - rhs).abs() as u64,
             _ => panic!("Cannot calculate distance between different Value types"),
@@ -185,13 +185,13 @@ impl Display for Value {
         match self {
             Self::Bool(v) => {
                 write!(f, "Value:Bool({v})")
-            }
+            },
             Self::I64(v) => {
                 write!(f, "Value:I64({v})")
-            }
+            },
             Self::F64(v) => {
                 write!(f, "Value:F64({v})")
-            }
+            },
         }
     }
 }
@@ -280,13 +280,13 @@ impl AddAssign for Value {
             Self::I64(v1) => match rhs {
                 Self::I64(v2) => {
                     *v1 += v2;
-                }
+                },
                 _ => unimplemented!("Unimplemented! Tried to add {self:?} to {rhs:?}"),
             },
             Self::F64(v1) => match rhs {
                 Self::F64(v2) => {
                     *v1 += v2;
-                }
+                },
                 _ => unimplemented!("Unimplemented! Tried to add {self:?} to {rhs:?}"),
             },
             _ => unimplemented!("Unimplemented! Tried to add {self:?} to {rhs:?}"),
@@ -308,13 +308,13 @@ impl SubAssign for Value {
             Self::I64(v1) => match rhs {
                 Self::I64(v2) => {
                     *v1 -= v2;
-                }
+                },
                 _ => unimplemented!("Unimplemented! Tried to subtract {rhs:?} from {self:?}"),
             },
             Self::F64(v1) => match rhs {
                 Self::F64(v2) => {
                     *v1 -= v2;
-                }
+                },
                 _ => unimplemented!("Unimplemented! Tried to subtract {rhs:?} from {self:?}"),
             },
             _ => unimplemented!("Unimplemented! Tried to subtract {rhs:?} from {self:?}"),

@@ -1,4 +1,4 @@
-# GOAP Lite
+# rust_goap
 
 [![Crates.io](https://img.shields.io/crates/v/rust_goap)](https://crates.io/crates/rust_goap)
 [![Documentation](https://docs.rs/rust_goap/badge.svg)](https://docs.rs/rust_goap)
@@ -8,8 +8,8 @@ A lightweight, efficient Goal-Oriented Action Planning (GOAP) library for Rust, 
 
 ## Features
 
-- **Simple API**: Easy-to-use interface for defining actions, goals, and world states
-- **Efficient Planning**: Uses A* pathfinding algorithm with custom heuristics
+- **Simple API**: Easy-to-use interface for defining actions, goals, and world state
+- **Efficient Planning**: Uses A\* pathfinding algorithm with custom heuristics
 - **Flexible State**: Supports various value types (bool, i64, f64)
 - **Cost-Based Optimization**: Finds the lowest-cost path to achieve goals
 - **Human-Readable Output**: Built-in plan formatting for debugging and visualization
@@ -72,6 +72,7 @@ fn main() {
 ## Core Concepts
 
 ### World State
+
 The current state of the world, represented as a key-value map:
 
 ```rust
@@ -81,7 +82,8 @@ let state = WorldState::new()
     .set("enemy_nearby", false);
 ```
 
-### Goals
+### Goal
+
 Desired states to achieve, with assertions on values:
 
 ```rust
@@ -90,7 +92,8 @@ let goal = Goal::new()
     .with("enemy_nearby", Assert::eq(false));
 ```
 
-### Actions
+### Action
+
 Actions that can be performed, with preconditions and effects:
 
 ```rust
@@ -102,7 +105,8 @@ let heal = Action::new("heal")
     });
 ```
 
-### Effects
+### Effect
+
 Changes to the world state when an action is performed:
 
 ```rust
@@ -136,11 +140,13 @@ Effect {
 The repository includes several examples:
 
 ### Basic Example
+
 ```bash
 cargo run --example basic
 ```
 
 ### Complex Planning Example
+
 ```bash
 cargo run --example long_plan
 ```
@@ -165,7 +171,8 @@ cargo run --example long_plan
 
 ## Performance
 
-The library uses the A* algorithm with the following optimizations:
+The library uses the A\* algorithm with the following optimizations:
+
 - Custom heuristic based on goal distance
 - Efficient state comparison and cloning
 - Early pruning of invalid action sequences
@@ -173,6 +180,7 @@ The library uses the A* algorithm with the following optimizations:
 ## Roadmap
 
 ### Planned Features
+
 [] **JSON Serialization**: Create actions, goals, and world states from JSON configuration
 
 [] **Plugin System**: Extensible action and effect system
@@ -194,6 +202,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m "Add some amazing feature"`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+### Code Formatting
+
+This project uses [`rustfmt`](https://github.com/rust-lang/rustfmt) for consistent code formatting. The configuration is defined in `.rustfmt.toml`.
 
 ## License
 
