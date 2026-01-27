@@ -181,11 +181,11 @@ The library uses the A\* algorithm with the following optimizations:
 
 ### Planned Features
 
-[] **JSON Serialization**: Create actions, goals, and world states from JSON configuration
+- **JSON Serialization**: Create actions, goals, and world states from JSON configuration
 
-[] **Plugin System**: Extensible action and effect system
+- **Plugin System**: Extensible action and effect system
 
-[] **Visualization Tools**: Graph visualization of planning process
+- **Visualization Tools**: Graph visualization of planning process
 
 ## Use Cases
 
