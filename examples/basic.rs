@@ -1,20 +1,34 @@
 use rust_goap::prelude::*;
 
 fn main() {
-    let start = WorldState::new().set("is_hungry", true);
+    // Define the initial world state
+    let start = WorldState::new()
+        .set("is_hungry", true)
+        .set("has_food", false);
 
+    // Define the goal: not hungry
     let goal = Goal::new().with("is_hungry", Assert::eq(false));
 
-    let eat_action = Action {
-        key: "eat".to_string(),
-        preconditions: vec![],
-        effect: Some(Effect {
-            mutations: vec![Mutation::set("is_hungry", false)],
-            cost: 1,
-        }),
-    };
+    // Define available actions
+    let buy_food = Action::new("buy_food").with_effect(Effect {
+        mutations: vec![Mutation::set("has_food", true)],
+        cost: 2,
+    });
 
-    let actions: Vec<Action> = vec![eat_action];
-    let plan = make_plan(&start, &actions[..], &goal);
-    println!("{}", format_plan(plan.unwrap()));
+    let eat = Action::new("eat")
+        .with_precondition(("has_food", Assert::eq(true)))
+        .with_effect(Effect {
+            mutations: vec![
+                Mutation::set("is_hungry", false),
+                Mutation::set("has_food", false),
+            ],
+            cost: 1,
+        });
+
+    let actions = vec![buy_food, eat];
+
+    // Find the optimal plan
+    if let Some(plan) = make_plan(&start, &actions, &goal) {
+        println!("{}", format_plan(plan.clone()));
+    }
 }

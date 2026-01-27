@@ -10,7 +10,7 @@ A lightweight, efficient Goal-Oriented Action Planning (GOAP) library for Rust, 
 
 - **Simple API**: Easy-to-use interface for defining actions, goals, and world states
 - **Efficient Planning**: Uses A* pathfinding algorithm with custom heuristics
-- **Flexible State System**: Supports various value types (bool, i64, f64, String)
+- **Flexible State**: Supports various value types (bool, i64, f64)
 - **Cost-Based Optimization**: Finds the lowest-cost path to achieve goals
 - **Human-Readable Output**: Built-in plan formatting for debugging and visualization
 - **Minimal Dependencies**: Only depends on the `pathfinding` crate
@@ -23,6 +23,10 @@ Add this to your `Cargo.toml`:
 ```toml
 [dependencies]
 rust_goap = "0.1"
+```
+
+```bash
+cargo add rust_goap
 ```
 
 ## Quick Start
@@ -40,11 +44,10 @@ fn main() {
     let goal = Goal::new().with("is_hungry", Assert::eq(false));
 
     // Define available actions
-    let buy_food = Action::new("buy_food")
-        .with_effect(Effect {
-            mutations: vec![Mutation::set("has_food", true)],
-            cost: 2,
-        });
+    let buy_food = Action::new("buy_food").with_effect(Effect {
+        mutations: vec![Mutation::set("has_food", true)],
+        cost: 2,
+    });
 
     let eat = Action::new("eat")
         .with_precondition(("has_food", Assert::eq(true)))
@@ -59,11 +62,11 @@ fn main() {
     let actions = vec![buy_food, eat];
 
     // Find the optimal plan
-    if let Some((plan, cost)) = make_plan(&start, &actions, &goal) {
-        println!("Found plan with cost: {}", cost);
-        println!("{}", format_plan(plan));
+    if let Some(plan) = make_plan(&start, &actions, &goal) {
+        println!("{}", format_plan(plan.clone()));
     }
 }
+
 ```
 
 ## Core Concepts
@@ -170,49 +173,17 @@ The library uses the A* algorithm with the following optimizations:
 ## Roadmap
 
 ### Planned Features
-- **JSON Serialization**: Create actions, goals, and world states from JSON configuration
-- **YAML Support**: Alternative configuration format for easier editing
-- **Plugin System**: Extensible action and effect system
-- **Parallel Planning**: Multi-threaded plan search for complex scenarios
-- **Visualization Tools**: Graph visualization of planning process
+[] **JSON Serialization**: Create actions, goals, and world states from JSON configuration
 
-### JSON Example (Future)
-```json
-{
-  "actions": [
-    {
-      "key": "eat",
-      "preconditions": [
-        {
-          "key": "has_food",
-          "assertion": {
-            "type": "eq",
-            "value": true
-          }
-        }
-      ],
-      "effect": {
-        "mutations": [
-          {
-            "type": "set",
-            "key": "is_hungry",
-            "value": false
-          }
-        ],
-        "cost": 1
-      }
-    }
-  ]
-}
-```
+[] **Plugin System**: Extensible action and effect system
+
+[] **Visualization Tools**: Graph visualization of planning process
 
 ## Use Cases
 
 - **Game AI**: NPC behavior planning, enemy AI, companion AI
-- **Robotics**: Task planning, behavior trees
 - **Simulations**: Agent-based modeling, decision systems
 - **Automation**: Workflow planning, process optimization
-- **Education**: Teaching AI planning concepts
 
 ## Contributing
 
@@ -230,8 +201,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-This project was inspired by and extracts core GOAP concepts from the [dogoap](https://github.com/victorb/dogoap) repository, a Rust implementation of Goal-Oriented Action Planning. GOAP Lite builds upon these foundations with a focus on simplicity, performance, and future extensibility including JSON serialization support.
+This project was inspired by and extracts core GOAP concepts from the [dogoap](https://github.com/victorb/dogoap) repository, a Rust implementation of Goal-Oriented Action Planning. rust_goap builds upon these foundations with a focus on simplicity, performance, and future extensibility including JSON serialization support.
 
 ---
 
-**GOAP Lite** - Simple, efficient, and extensible goal-oriented planning for Rust applications.
+**rust_goap** - Simple, efficient, and extensible goal-oriented planning for Rust applications.
