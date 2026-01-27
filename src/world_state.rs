@@ -24,7 +24,7 @@ use crate::goal::Goal;
 ///
 /// # Usage Example
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create a simple world state for a character
 /// let character_state = WorldState::new()
@@ -55,7 +55,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let empty_state = WorldState::new();
     /// // The state is truly empty - no variables defined
@@ -79,7 +79,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// // Build a world state incrementally
     /// let state = WorldState::new()
@@ -117,7 +117,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// // Create a world state
     /// let state = WorldState::new()
@@ -157,11 +157,11 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let state = WorldState::new()
     ///     .set("health", 100)
-    ///     .set("name", "player");
+    ///     .set("is_player", true);
     ///
     /// let health = state.get("health");
     /// assert!(health.is_some());
@@ -183,7 +183,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let state = WorldState::new()
     ///     .set("health", 100)
@@ -203,7 +203,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let state = WorldState::new()
     ///     .set("a", 1)
@@ -223,7 +223,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let empty_state = WorldState::new();
     /// let populated_state = WorldState::new().set("key", 42);
@@ -245,7 +245,7 @@ impl WorldState {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let state = WorldState::new()
     ///     .set("health", 100)
@@ -284,7 +284,7 @@ impl Hash for WorldState {
     /// ```
     /// use std::collections::hash_map::DefaultHasher;
     /// use std::hash::{Hash, Hasher};
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let state1 = WorldState::new()
     ///     .set("health", 100)
@@ -325,7 +325,7 @@ impl Hash for WorldState {
 ///
 /// # Example
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create from a vector of tuples
 /// let state: WorldState = vec![
@@ -352,20 +352,20 @@ impl From<Vec<(String, Value)>> for WorldState {
 ///
 /// # Example
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 /// use std::fmt::Write;
 ///
 /// let state = WorldState::new()
 ///     .set("health", 100)
-///     .set("name", "hero")
+///     .set("is_hero", true)
 ///     .set("active", true);
 ///
 /// let mut output = String::new();
 /// write!(&mut output, "{}", state).unwrap();
 ///
-/// // Output format: WorldState { health: Value:I64(100), name: Value:Bool(true), active: Value:Bool(true) }
+/// // Output format: WorldState { health: Value:I64(100), is_hero: Value:Bool(true), active: Value:Bool(true) }
 /// assert!(output.contains("health"));
-/// assert!(output.contains("name"));
+/// assert!(output.contains("is_hero"));
 /// assert!(output.contains("active"));
 /// ```
 impl std::fmt::Display for WorldState {

@@ -21,7 +21,7 @@ use crate::basic::assert::Assert;
 ///
 /// # Usage Example
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create a simple goal: character should not be hungry
 /// let simple_goal = Goal::new().with("is_hungry", Assert::eq(false));
@@ -53,7 +53,7 @@ pub struct Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let goal = Goal::new()
     ///     .with("health", Assert::gt_eq(50))
@@ -84,7 +84,7 @@ impl Hash for Goal {
     /// ```
     /// use std::collections::hash_map::DefaultHasher;
     /// use std::hash::{Hash, Hasher};
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let goal1 = Goal::new().with("health", Assert::gt_eq(50));
     /// let goal2 = Goal::new().with("health", Assert::gt_eq(50));
@@ -119,7 +119,7 @@ impl Default for Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let default_goal = Goal::default();
     /// assert!(default_goal.requirements.is_empty());
@@ -144,7 +144,7 @@ impl Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let empty_goal = Goal::new();
     /// assert!(empty_goal.requirements.is_empty());
@@ -174,7 +174,7 @@ impl Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let goal = Goal::new()
     ///     .with("health", Assert::gt_eq(80))      // Health >= 80
@@ -207,7 +207,7 @@ impl Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// // Define requirements separately
     /// let conditions = vec![
@@ -245,7 +245,7 @@ impl Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// // Create a goal
     /// let goal = Goal::new()
@@ -283,7 +283,7 @@ impl Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let goal = Goal::new()
     ///     .with("a", Assert::eq(1))
@@ -303,7 +303,7 @@ impl Goal {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let empty_goal = Goal::new();
     /// let populated_goal = Goal::new().with("key", Assert::eq(42));

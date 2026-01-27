@@ -1,10 +1,10 @@
 # GOAP Lite
 
-[![Crates.io](https://img.shields.io/crates/v/goap_lite)](https://crates.io/crates/goap_lite)
-[![Documentation](https://docs.rs/goap_lite/badge.svg)](https://docs.rs/goap_lite)
+[![Crates.io](https://img.shields.io/crates/v/rust_goap)](https://crates.io/crates/rust_goap)
+[![Documentation](https://docs.rs/rust_goap/badge.svg)](https://docs.rs/rust_goap)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A lightweight, efficient Goal-Oriented Action Planning (GOAP) library for Rust, designed for game AI and decision-making systems. Extracted from the core GOAP concepts of the dogoap project with enhanced features and flexibility.
+A lightweight, efficient Goal-Oriented Action Planning (GOAP) library for Rust, designed for game AI and decision-making systems.
 
 ## Features
 
@@ -22,13 +22,13 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-goap_lite = "0.1"
+rust_goap = "0.1"
 ```
 
 ## Quick Start
 
 ```rust
-use goap_lite::prelude::*;
+use rust_goap::prelude::*;
 
 fn main() {
     // Define the initial world state

@@ -12,7 +12,7 @@ use std::ops::{Add, AddAssign, Sub, SubAssign};
 ///
 /// # Examples
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// let bool_value: Value = true.into();      // Value::Bool(true)
 /// let int_value: Value = 42.into();         // Value::I64(42)
@@ -33,7 +33,7 @@ impl From<i64> for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let value: Value = 42.into();
     /// assert!(matches!(value, Value::I64(42)));
@@ -48,7 +48,7 @@ impl From<f64> for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let value: Value = 3.14.into();
     /// assert!(matches!(value, Value::F64(3.14)));
@@ -63,7 +63,7 @@ impl From<bool> for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let value: Value = true.into();
     /// assert!(matches!(value, Value::Bool(true)));
@@ -99,7 +99,7 @@ impl PartialEq for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let a: Value = 42.into();
     /// let b: Value = 42.into();
@@ -138,7 +138,7 @@ impl Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let a: Value = 10.into();
     /// let b: Value = 15.into();
@@ -171,7 +171,7 @@ impl Display for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let bool_val: Value = true.into();
     /// let int_val: Value = 42.into();
@@ -214,7 +214,7 @@ impl Add for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let a: Value = 10.into();
     /// let b: Value = 5.into();
@@ -249,7 +249,7 @@ impl Sub for Value {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let a: Value = 10.into();
     /// let b: Value = 5.into();

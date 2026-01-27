@@ -175,7 +175,7 @@ pub fn make_plan_with_strategy(
 ///
 /// # Example
 /// ```rust
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// let start = WorldState::new().set("has_food", false).set("is_hungry", true);
 /// let goal = Goal::new().with("is_hungry", Assert::eq(false));

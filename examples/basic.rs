@@ -1,4 +1,4 @@
-use goap_lite::prelude::*;
+use rust_goap::prelude::*;
 
 fn main() {
     let start = WorldState::new().set("is_hungry", true);

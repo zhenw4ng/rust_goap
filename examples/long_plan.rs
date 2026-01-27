@@ -1,6 +1,6 @@
 //! This example shows how a plan with lots of steps can be created.
 
-use goap_lite::prelude::*;
+use rust_goap::prelude::*;
 
 fn main() {
     let start = WorldState::new()

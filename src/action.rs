@@ -17,19 +17,19 @@ use crate::world_state::WorldState;
 ///
 /// # Usage Example
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create an action for attacking an enemy
 /// let attack_action = Action::new("Attack")
 ///     .with_precondition(("has_weapon", Assert::eq(true)))
 ///     .with_precondition(("enemy_in_range", Assert::eq(true)))
-///     .with_effect(Effect::new().with_mutation("enemy_health", Mutation::decrease(10)));
+///     .with_effect(Effect::new().with_mutation("enemy_health", Mutation::decrement("enemy_health", 10)));
 ///
 /// // Create an action for gathering resources
 /// let gather_action = Action::new("GatherWood")
 ///     .with_precondition(("has_axe", Assert::eq(true)))
 ///     .with_precondition(("near_forest", Assert::eq(true)))
-///     .with_effect(Effect::new().with_mutation("wood_count", Mutation::increase(1)));
+///     .with_effect(Effect::new().with_mutation("wood_count", Mutation::increment("wood_count", 1)));
 /// ```
 #[derive(Clone, Debug, PartialEq, Default)]
 pub struct Action {
@@ -80,7 +80,7 @@ impl Action {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let action = Action::new("MoveToTarget");
     /// assert_eq!(action.key, "MoveToTarget");
@@ -109,7 +109,7 @@ impl Action {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let action = Action::new("Attack")
     ///     .with_precondition(("has_weapon", Assert::eq(true)))
@@ -135,9 +135,9 @@ impl Action {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
-    /// let effect = Effect::new().with_mutation("enemy_health", Mutation::decrease(10));
+    /// let effect = Effect::new().with_mutation("enemy_health", Mutation::decrement("enemy_health", 10));
     /// let action = Action::new("Attack").with_effect(effect);
     ///
     /// assert!(action.effect.is_some());
@@ -164,7 +164,7 @@ impl Action {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// // Create a world state
     /// let world_state = WorldState::new()

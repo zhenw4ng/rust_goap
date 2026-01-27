@@ -17,24 +17,24 @@ use std::hash::{Hash, Hasher};
 ///
 /// # Usage Example
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create an effect for an attack action
 /// let attack_effect = Effect::new()
-///     .with_mutation("enemy_health", Mutation::decrement(25))
-///     .with_mutation("ammo_count", Mutation::decrement(1))
+///     .with_mutation("enemy_health", Mutation::decrement("", 25))
+///     .with_mutation("ammo_count", Mutation::decrement("", 1))
 ///     .with_cost(2); // Attacking has a higher cost than other actions
 ///
 /// // Create an effect for a healing action
 /// let heal_effect = Effect::new()
-///     .with_mutation("player_health", Mutation::increment(50))
-///     .with_mutation("medical_supplies", Mutation::decrement(1));
+///     .with_mutation("player_health", Mutation::increment("", 50))
+///     .with_mutation("medical_supplies", Mutation::decrement("", 1));
 ///     // Uses default cost of 1
 ///
 /// // Create an effect for a resource gathering action
 /// let gather_effect = Effect::new()
-///     .with_mutation("wood_count", Mutation::increment(5))
-///     .with_mutation("stamina", Mutation::decrement(10));
+///     .with_mutation("wood_count", Mutation::increment("", 5))
+///     .with_mutation("stamina", Mutation::decrement("", 10));
 /// ```
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Effect {
@@ -45,11 +45,11 @@ pub struct Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let effect = Effect::new()
-    ///     .with_mutation("health", Mutation::increment(20))
-    ///     .with_mutation("hunger", Mutation::decrement(5));
+    ///     .with_mutation("health", Mutation::increment("", 20))
+    ///     .with_mutation("hunger", Mutation::decrement("", 5));
     ///
     /// assert_eq!(effect.mutations.len(), 2);
     /// ```
@@ -65,7 +65,7 @@ pub struct Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let cheap_effect = Effect::new(); // Default cost: 1
     /// let expensive_effect = Effect::new().with_cost(5);
@@ -83,7 +83,7 @@ impl Default for Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let default_effect = Effect::default();
     /// assert!(default_effect.mutations.is_empty());
@@ -108,7 +108,7 @@ impl Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let effect = Effect::new();
     /// assert!(effect.mutations.is_empty());
@@ -135,11 +135,11 @@ impl Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let effect = Effect::new()
-    ///     .with_mutation("health", Mutation::increment(50))
-    ///     .with_mutation("stamina", Mutation::decrement(20));
+    ///     .with_mutation("health", Mutation::increment("", 50))
+    ///     .with_mutation("stamina", Mutation::decrement("", 20));
     ///
     /// assert_eq!(effect.mutations.len(), 2);
     /// ```
@@ -169,10 +169,10 @@ impl Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let effect = Effect::new()
-    ///     .with_mutation("distance", Mutation::decrement(10))
+    ///     .with_mutation("distance", Mutation::decrement("", 10))
     ///     .with_cost(3); // Moving has a cost of 3
     ///
     /// assert_eq!(effect.cost, 3);
@@ -192,15 +192,15 @@ impl Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let mut world_state = WorldState::new()
     ///     .set("health", 50)
     ///     .set("ammo", 10);
     ///
     /// let effect = Effect::new()
-    ///     .with_mutation("health", Mutation::increment(25))
-    ///     .with_mutation("ammo", Mutation::decrement(2));
+    ///     .with_mutation("health", Mutation::increment("", 25))
+    ///     .with_mutation("ammo", Mutation::decrement("", 2));
     ///
     /// effect.apply_to(&mut world_state);
     /// // world_state now has health = 75 and ammo = 8
@@ -220,12 +220,12 @@ impl Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let effect = Effect::new()
-    ///     .with_mutation("a", Mutation::set(1))
-    ///     .with_mutation("b", Mutation::set(2))
-    ///     .with_mutation("c", Mutation::set(3));
+    ///     .with_mutation("a", Mutation::set("", 1))
+    ///     .with_mutation("b", Mutation::set("", 2))
+    ///     .with_mutation("c", Mutation::set("", 3));
     ///
     /// assert_eq!(effect.mutation_count(), 3);
     /// ```
@@ -240,10 +240,10 @@ impl Effect {
     ///
     /// # Example
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let empty_effect = Effect::new();
-    /// let populated_effect = Effect::new().with_mutation("key", Mutation::set(42));
+    /// let populated_effect = Effect::new().with_mutation("key", Mutation::set("", 42));
     ///
     /// assert!(!empty_effect.has_mutations());
     /// assert!(populated_effect.has_mutations());
@@ -266,11 +266,11 @@ impl Hash for Effect {
     /// ```
     /// use std::collections::hash_map::DefaultHasher;
     /// use std::hash::{Hash, Hasher};
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
-    /// let effect1 = Effect::new().with_mutation("health", Mutation::increment(10));
-    /// let effect2 = Effect::new().with_mutation("health", Mutation::increment(10));
-    /// let effect3 = Effect::new().with_mutation("health", Mutation::increment(20));
+    /// let effect1 = Effect::new().with_mutation("health", Mutation::increment("", 10));
+    /// let effect2 = Effect::new().with_mutation("health", Mutation::increment("", 10));
+    /// let effect3 = Effect::new().with_mutation("health", Mutation::increment("", 20));
     ///
     /// let mut hasher1 = DefaultHasher::new();
     /// let mut hasher2 = DefaultHasher::new();

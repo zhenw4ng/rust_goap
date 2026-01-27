@@ -9,7 +9,7 @@ use crate::world_state::WorldState;
 ///
 /// # Examples
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create different types of mutations
 /// let set_mutation = Mutation::set("health", 100);      // Set health to 100
@@ -38,7 +38,7 @@ impl Mutation {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let mutation = Mutation::set("health", 100);
     /// assert!(matches!(mutation, Mutation::Set(key, Value::I64(100)) if key == "health"));
@@ -54,7 +54,7 @@ impl Mutation {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let mutation = Mutation::delete("temp_key");
     /// assert!(matches!(mutation, Mutation::Delete(key) if key == "temp_key"));
@@ -71,7 +71,7 @@ impl Mutation {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let mutation = Mutation::increment("ammo", 10);
     /// assert!(matches!(mutation, Mutation::Increment(key, Value::I64(10)) if key == "ammo"));
@@ -88,7 +88,7 @@ impl Mutation {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let mutation = Mutation::decrement("hunger", 5);
     /// assert!(matches!(mutation, Mutation::Decrement(key, Value::I64(5)) if key == "hunger"));
@@ -110,7 +110,7 @@ impl Mutation {
 ///
 /// # Examples
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// let mut world_state = WorldState::new().set("health", 50);
 /// let mutation = Mutation::increment("health", 25);
@@ -156,7 +156,7 @@ pub fn apply_mutator(world_state: &mut WorldState, mutator: &Mutation) {
 ///
 /// # Examples
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// let mutations = vec![
 ///     Mutation::set("health", 100),

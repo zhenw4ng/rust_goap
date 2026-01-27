@@ -9,7 +9,7 @@ use std::hash::{Hash, Hasher};
 ///
 /// # Examples
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// // Create assertions for different comparison types
 /// let eq_assert = Assert::eq(42);          // Value must equal 42
@@ -43,7 +43,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::eq(42);
     /// assert!(matches!(assert, Assert::Equals(Value::I64(42))));
@@ -59,7 +59,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::not_eq(0);
     /// assert!(matches!(assert, Assert::NotEquals(Value::I64(0))));
@@ -75,7 +75,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::gt_eq(50);
     /// assert!(matches!(assert, Assert::GreaterThanEquals(Value::I64(50))));
@@ -91,7 +91,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::lt_eq(100);
     /// assert!(matches!(assert, Assert::LessThanEquals(Value::I64(100))));
@@ -107,7 +107,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::gt(10);
     /// assert!(matches!(assert, Assert::GreaterThan(Value::I64(10))));
@@ -123,7 +123,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::lt(200);
     /// assert!(matches!(assert, Assert::LessThan(Value::I64(200))));
@@ -141,7 +141,7 @@ impl Assert {
     ///
     /// # Examples
     /// ```
-    /// use goap_lite::prelude::*;
+    /// use rust_goap::prelude::*;
     ///
     /// let assert = Assert::eq(42);
     /// let value = assert.value();
@@ -213,7 +213,7 @@ impl Hash for Assert {
 ///
 /// # Examples
 /// ```
-/// use goap_lite::prelude::*;
+/// use rust_goap::prelude::*;
 ///
 /// let value = Value::I64(42);
 /// let assert = Assert::eq(42);
