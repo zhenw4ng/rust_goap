@@ -2,6 +2,11 @@
 name = "rust_goap"
 version = "0.1.0"
 edition = "2024"
+license-file = "LICENSE"
+authors = ["ZHEN WANG <i@zhen.wang>"]
+description = "A Goap implementation in Rust"
+keywords = ["GOAP", "GameAI"]
+repository = "https://github.com/zhenw4ng/rust_goap"
 
 [dependencies]
 pathfinding = "4.14.0"
